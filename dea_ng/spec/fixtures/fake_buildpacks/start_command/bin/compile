@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+cat /etc/lsb-release
+echo "-----> Some compilation output"
+echo "-----> Start command buildpack output"
+if [ -d $2 ]; then
+  echo "-----> Copying files from cache"
+  mv $2/* $1
+
+  echo "-----> Saving files to cache"
+  touch $2/new_cached_file
+fi
+
+echo "-----> Env variables are:"
+env
+echo "-----> End"
+sleep 10
+exit 0
